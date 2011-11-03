@@ -1,1 +1,9 @@
-# You can use this file for component-specific configuration.
+config:
+  agi_server: 127.0.0.1
+  prefix: SIP/mycarrier
+plan:
+  number: 1231231234 
+  answers:
+  - 1
+  - 2
+  - 3

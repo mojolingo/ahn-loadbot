@@ -9,11 +9,11 @@ Gem::Specification.new do |s|
   s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Your Name Here!"]
+  s.authors = ["Ben Klang", "Bryan Rite"]
 
   s.date = Date.today.to_s
-  s.description = "This Adhearsion component gem has not yet been described."
-  s.email = "noreply@example.com"
+  s.description = "Bot to generate load against an Adhearsion server with intelligent(?) responses."
+  s.email = "dev&adhearsion.com"
 
   s.files = GEM_FILES
 
