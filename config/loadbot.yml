@@ -1,3 +1,11 @@
+# A sample configuration file for the connection and answering instructions.
+#
+# Answers can be in the form: digits_to_send[,seconds_to_wait]
+# - 1               # Send the digit 1
+# - "1"             # Send the digit 1
+# - "1,5"           # Send the digit 1 and wait 5 seconds
+# - "18001231234,2" # Send the digits 18001231234 and wait 2 seconds
+
 config:
   agi_server: 127.0.0.1
   prefix: SIP/mycarrier
@@ -5,5 +13,5 @@ plan:
   number: 1231231234 
   answers:
   - 1
-  - 2
-  - 3
+  - "2,6"
+  - "3"
