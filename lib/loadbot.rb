@@ -9,6 +9,8 @@ methods_for :rpc do
     ahn_log.loadbot.debug COMPONENTS.loadbot.inspect
     config = COMPONENTS.loadbot['config']
     plan = LoadBot.load_plan(plan_name)
+
+    ahn_log.loadboat.debug "Calling #{config['prefix']}/#{plan['number']} with plan name #{plan_name}"
     
     manager = Adhearsion::VoIP::Asterisk.manager_interface
     manager.call_and_exec "#{config['prefix']}/#{plan['number']}", "agi", :args => "agi://#{config['agi_server']}/loadbot", :variables => {:plan => plan_name}
@@ -19,7 +21,7 @@ class LoadBot
   def initialize(call, plan_name)
     ahn_log.loadbot.debug "Initializing LoadBot with plan: #{plan_name}"
     @call = call
-    @plan = load_plan(plan_name)
+    @plan = LoadBot.load_plan(plan_name)
   end
 
   def run
@@ -58,6 +60,8 @@ class LoadBot
     # TODO: do some more sanity checks in here:
     # Does the plan have a number?
     # Does it have some answers? etc.
+
+   plan
 
   end
 end
