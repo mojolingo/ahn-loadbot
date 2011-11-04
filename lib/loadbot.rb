@@ -39,11 +39,11 @@ class LoadBot
     # properly.
     @plan['answers'].each do |a|
       @call.execute 'WaitForSilence'
-      answer,delay = a.to_s().split(',')
-      delay = delay.nil? ? 0 : delay.to_i()
+      answer,delay = a.to_s.split(',')
+      delay = delay.nil? ? 0 : delay.to_i
       ahn_log.loadbot.debug "Answer: #{answer} : Delay: #{delay} second(s)"
       @call.execute 'SendDTMF', answer unless answer.downcase.eql? "sleep"
-      sleep((wait + delay).seconds)
+      sleep wait + delay
     end
 
     @call.execute 'WaitForSilence'
