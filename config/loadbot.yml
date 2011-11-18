@@ -1,10 +1,16 @@
 # A sample configuration file for the connection and answering instructions.
 #
 # Answers can be in the form: digits_to_send[,seconds_to_wait]
-# - 1               # Send the digit 1
-# - "1"             # Send the digit 1
-# - "1,5"           # Send the digit 1 and wait 5 seconds
-# - "18001231234,2" # Send the digits 18001231234 and wait 2 seconds
+# - 1                      # Send the digit 1
+# - "1"                    # Send the digit 1
+# - "1,5"                  # Send the digit 1 and wait 5 seconds
+# - "18001231234,2"        # Send the digits 18001231234 and wait 2 seconds
+#
+# Answers can also be in the form of a command: command[, seconds_to_wait]
+# - "sleep,4"              # Do nothing but sleep for 4 seconds
+# - "hangup"               # Terminate the call by hanging up
+# - "play hello-world"     # Play the sound file 'hello-world'
+# - "play hello-world,4"   # Play the sound file 'hello-world' and wait 4 seconds
 
 config:
   agi_server: 127.0.0.1
@@ -15,3 +21,4 @@ plan:
   - 1
   - "2,6"
   - "3"
+  - "hangup"
