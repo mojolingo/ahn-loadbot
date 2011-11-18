@@ -42,7 +42,22 @@ class LoadBot
       answer,delay = a.to_s.split(',')
       delay = delay.nil? ? 0 : delay.to_i
       ahn_log.loadbot.debug "Answer: #{answer} : Delay: #{delay} second(s)"
-      @call.execute 'SendDTMF', answer unless answer.downcase.eql? "sleep"
+
+      case answer
+      when "sleep"
+        ahn_log.loadbot.debug "Sleeping..."
+      when "hangup"
+        ahn_log.loadbot.debug "Hanging Up."
+        @call.hangup
+      when /^play /
+        file = answer.split(' ')[1]
+        raise ArgumentError, "Test plan answer specifies play but with no sound file." if file.nil?
+        ahn_log.loadbot.debug "Playing File: #{file}"
+        @call.execute 'Playback', file
+      else
+        @call.execute 'SendDTMF', answer
+      end
+      
       sleep wait + delay
     end
 
