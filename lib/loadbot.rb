@@ -13,8 +13,7 @@ methods_for :rpc do
     ahn_log.loadboat.debug "Calling #{config['prefix']}/#{plan['number']} with plan name #{plan_name}"
     
     manager = Adhearsion::VoIP::Asterisk.manager_interface
-    manager.call_and_exec "#{config['prefix']}/#{plan['number']}", "agi", :args => "agi://#{config['agi_server']}/loadbot", :variables => {:plan => plan_name}
-  end
+    manager.call_and_exec "#{config['prefix']}/#{plan['number']}", "agi", :args => "agi://#{config['agi_server']}/loadbot", :variables => {:plan => plan_name}, :caller_id => plan['caller_id']
 end
 
 class LoadBot

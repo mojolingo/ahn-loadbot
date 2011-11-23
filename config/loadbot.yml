@@ -1,4 +1,9 @@
 # A sample configuration file for the connection and answering instructions.
+# 
+# Configuration requires agi_server and prefix to be specified.
+#
+# Each plan must have a number and at least one answer.
+# Each plan can optionally specify a caller_id.
 #
 # Answers can be in the form: digits_to_send[,seconds_to_wait]
 # - 1                      # Send the digit 1
@@ -6,7 +11,7 @@
 # - "1,5"                  # Send the digit 1 and wait 5 seconds
 # - "18001231234,2"        # Send the digits 18001231234 and wait 2 seconds
 #
-# Answers can also be in the form of a command: command[, seconds_to_wait]
+# Answers can also be in the form of a command: command[,seconds_to_wait]
 # - "sleep,4"              # Do nothing but sleep for 4 seconds
 # - "hangup"               # Terminate the call by hanging up
 # - "play hello-world"     # Play the sound file 'hello-world'
@@ -15,10 +20,19 @@
 config:
   agi_server: 127.0.0.1
   prefix: SIP/mycarrier
-plan:
-  number: 1231231234 
-  answers:
-  - 1
-  - "2,6"
-  - "3"
-  - "hangup"
+
+plans:  
+  plan 1:
+    number: 1231231234 
+    answers:
+    - 1
+    - "2,6"
+    - "3"
+    - "hangup"
+  plan 2:
+    number: 2342342345
+    caller_id: 7897897890
+    answers:
+    - "play hello-world,4"
+    - "hangup"
+    
