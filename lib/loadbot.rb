@@ -52,7 +52,7 @@ class LoadBot
         file = answer.split(' ')[1]
         raise ArgumentError, "Test plan answer specifies play but with no sound file." if file.nil?
         ahn_log.loadbot.debug "Playing File: #{file}"
-        @call.play file
+        @call.play! file
       else
         @call.dtmf answer
       end
